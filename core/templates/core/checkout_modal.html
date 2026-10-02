@@ -1,0 +1,52 @@
+<div class="modal-overlay" id="checkoutModal">
+    <div class="modal">
+        <h2>Patient Details & Checkout</h2>
+        <p style="margin-bottom: 15px; font-size: 13px; color: #666;">Before checking out, we will securely verify your medical profile against the selected medicine.</p>
+
+        <div id="checkoutForm">
+            <div class="form-group">
+                <label for="patientName">Patient Name</label>
+                <input type="text" id="patientName" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label class="checkbox">
+                    <input type="checkbox" id="hasDiabetes"> I have Diabetes
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="checkbox">
+                    <input type="checkbox" id="hasThyroid"> I have a Thyroid Condition
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="otherConditions">Other Conditions</label>
+                <textarea id="otherConditions" placeholder="Any other allergies or conditions?"></textarea>
+            </div>
+            <input type="hidden" id="checkoutMedicineId">
+            <input type="hidden" id="checkoutMedicineName">
+        </div>
+
+        <div id="aiCheckoutAdvice"></div>
+        <section id="paymentSection" class="checkout-payment" aria-labelledby="paymentSectionTitle">
+            <div class="checkout-payment-header">
+                <div>
+                    <h3 id="paymentSectionTitle">Payment</h3>
+                    <p>Review your order before continuing to secure payment.</p>
+                </div>
+                <span class="payment-test-badge">TEST MODE</span>
+            </div>
+            <div id="paymentItems" class="checkout-payment-items"></div>
+            <div class="checkout-payment-row checkout-payment-total">
+                <span>Total amount</span>
+                <strong id="paymentAmount"></strong>
+            </div>
+            <p class="checkout-payment-provider">Secure payment powered by Razorpay</p>
+        </section>
+
+        <div class="modal-buttons">
+            <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+            <button class="btn-cancel" id="backToDetailsBtn" onclick="returnToPatientDetails()" style="display: none;">Back to details</button>
+            <button class="btn-proceed" id="proceedBtn" onclick="verifyAndCheckout()">Verify Profile with AI</button>
+        </div>
+    </div>
+</div>

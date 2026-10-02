@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block body_class %}auth-page{% endblock %}
+{% block title %}Create an account - Medify{% endblock %}
+
+{% block content %}
+<section class="auth-panel">
+    <h1>Create an account</h1>
+    <form method="post" class="auth-form">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form.as_p }}
+        <button type="submit">Create account</button>
+    </form>
+    <p class="auth-switch">Already have an account? <a href="{% url 'login' %}{% if next %}?next={{ next|urlencode }}{% endif %}">Log in</a></p>
+</section>
+{% endblock %}
